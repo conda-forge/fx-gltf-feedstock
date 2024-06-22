@@ -15,7 +15,7 @@ source:
     folder: test/data/glTF-Sample-Models
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
