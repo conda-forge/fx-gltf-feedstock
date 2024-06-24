@@ -7,7 +7,7 @@ if [[ "${target_platform}" == osx-* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
-if [ "${target_platform}" = "linux-ppc64le" ] || [ "${target_platform}" = "linux_aarch64" ]; then
+if [ "${target_platform}" = "linux-ppc64le" ] || [ "${target_platform}" = "linux-aarch64" ]; then
   CXXFLAGS="${CXXFLAGS} -Wno-narrowing"
 fi
 
