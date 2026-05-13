@@ -10,6 +10,7 @@ source:
     sha256: d044d191f9f6c956bdbaf548d960ae9831fd13dfdc4c82fceefa90cb02a68091
     patches:
       - exclude-apple-from-stdc++fs-linking.patch
+      - signed-decode-map.patch
   - url: https://github.com/KhronosGroup/glTF-Sample-Models/archive/2279f7a96e64f76c8bfb306b3b8fd666b2bb93bf.zip
     sha256: be28a164e548775d94f15abd19ec71ca4c22e9e2d66f27757fbab412838360f0
     folder: test/data/glTF-Sample-Models
