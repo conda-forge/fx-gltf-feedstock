@@ -15,7 +15,7 @@ source:
     folder: test/data/glTF-Sample-Models
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -27,11 +27,26 @@ requirements:
     - ninja
   host:
     - nlohmann_json
+  run:
+    - nlohmann_json
 
 test:
+  requires:
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+    - cmake
+    - ninja
+  files:
+    - test_package
   commands:
     - test -f $PREFIX/lib/cmake/fx-gltf/fx-gltfConfig.cmake  # [not win]
+    - cmake -S test_package -B test_build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PREFIX  # [not win]
+    - cmake --build test_build --config Release  # [not win]
+    - ./test_build/fx_gltf_consumer  # [not win]
     - if not exist %PREFIX%\\Library\\lib\\cmake\\fx-gltf\\fx-gltfConfig.cmake exit 1  # [win]
+    - cmake -S test_package -B test_build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX%  # [win]
+    - cmake --build test_build --config Release  # [win]
+    - test_build\\fx_gltf_consumer.exe  # [win]
 
 about:
   home: https://github.com/jessey-git/fx-gltf
